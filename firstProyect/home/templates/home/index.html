@@ -1,0 +1,40 @@
+{% extends 'home/base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid main_index d-flex flex-column justify-content-between flex-md-row row gx-5 p-4">
+    <div class="card col-12 col-lg-5  d-none d-lg-flex">
+        <div class="card-header card_header_signup">
+            Crea, reseña, comparte.
+        </div>
+        <div class="card-body pt-0">
+          <h1 class="card-title ">Mi librería</h1>
+          <p class="card-text">Añade libros a tu lista de leidos, califícalos, cuenta tus impresiones, debate sobre su trama y contexto, escribe pasajes literarios alternativos.</p>
+          <a href="#" class="btn btn-primary btn_signup col-12 col-lg-4 mb-2 ">Crear cuenta</a>
+        </div>
+    </div>
+    <div class="col-12 col-lg-5 login d-flex flex-column">
+        <h4 class="login_title">Ya eres parte de la comunidad.</h4>
+        <form method="POST">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="example@domain.com">
+              <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
+            </div>
+            <div class="mb-3">
+                <label for="inputPassword5" class="form-label">Contraseña</label>
+                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="**********">
+                <div id="passwordHelpBlock" class="form-text">
+                  Tu contraseña debe tener entre 8 y 20 caracteres, contener letras y números, y no debe contener espacios, caracteres especiales ni emoji.
+                </div>
+            </div>
+            <div class="text-center text-md-end pt-1">
+                <button id="btn_signup" type="submit" class="btn btn-primary btn_signup col-12 col-lg-4 mb-2" >Enviar</button>
+                <a class="mobile_create_account d-inline d-lg-none text-center text-decoration-none" href="">¿Aún no eres parte? Crea una cuenta.</a>
+            </div>
+            
+          </form>
+    </div>
+</div>
+{% endblock content %}
