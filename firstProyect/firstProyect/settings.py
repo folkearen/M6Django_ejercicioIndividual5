@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #Apps del proyecto
     'home.apps.HomeConfig',
+    'user_manager',
     #Apps default
     'django.contrib.admin',
     'django.contrib.auth',
