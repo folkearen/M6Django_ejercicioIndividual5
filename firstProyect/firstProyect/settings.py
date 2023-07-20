@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #Apps del proyecto
     'home.apps.HomeConfig',
-    'user_manager',
+    'user_manager.apps.UserManagerConfig',
     #Apps default
     'django.contrib.admin',
     'django.contrib.auth',
@@ -129,3 +129,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = "user_manager.Usuario"

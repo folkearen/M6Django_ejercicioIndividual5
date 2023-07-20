@@ -1,1 +1,11 @@
-<h1>Holis</h1>
+{% extends 'home/base.html' %}
+{% block main %}
+    {{ error }}
+    <h1>Sign Up</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="enviar">
+    </form>
+    
+{% endblock main %}

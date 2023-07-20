@@ -32,6 +32,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Mi librería</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href=" {% url 'user_manager:mostrarUsuarios' %} ">Show user</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -69,8 +72,8 @@
           </nav>
     </header>
     <main>
-        {% block content  %}
-        {% endblock content %}
+        {% block main  %}
+        {% endblock main %}
     </main>
     <footer class="container-fluid d-none d-lg-block">
         <div>
