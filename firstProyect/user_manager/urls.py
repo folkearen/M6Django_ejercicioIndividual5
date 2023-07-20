@@ -5,5 +5,6 @@ from .views import *
 app_name = 'user_manager'
 
 urlpatterns = [
-    path('', mostrarUsuarios, name='mostrarUsuarios')
+    path('', mostrarUsuarios, name='mostrarUsuarios'),
+    path('signUp/', signUp, name='signUp')
 ]

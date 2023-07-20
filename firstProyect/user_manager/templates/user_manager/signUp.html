@@ -6,6 +6,12 @@
     <title>Sign up</title>
 </head>
 <body>
-    
+    {{ error }}
+    <h1>Sign Up</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="enviar">
+    </form>
 </body>
 </html>
