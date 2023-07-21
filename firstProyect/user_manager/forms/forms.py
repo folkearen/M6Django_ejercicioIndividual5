@@ -1,5 +1,6 @@
 from django import forms
 from ..models import *
+import re
 #Etiqueta meta
 #model: Este atributo se usa cuando se desea crear un formulario basado en un modelo (ModelForm). Indica el modelo en el que se basará el formulario, y Django generará automáticamente los campos del formulario según los campos del modelo.
 # fields: Se utiliza en los ModelForms para indicar qué campos del modelo se incluirán en el formulario. Puedes especificar una lista de nombres de campos que deseas mostrar en el formulario.
@@ -10,23 +11,38 @@ from ..models import *
 # error_messages: Permite personalizar los mensajes de error para campos específicos en caso de que la validación falle.
 
 class SignUp(forms.ModelForm):
-    nombre = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'singup_input'}))
-    apellido = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'singup_input'}))
-    email = forms.CharField(max_length=254, required=True, widget=forms.TextInput(attrs={'class': 'singup_input'}))
-    password = forms.CharField(max_length=12, required=True,  widget=forms.PasswordInput(attrs={'class': 'singup_input'}))
-    confirm_password = forms.CharField(max_length=12, required=True, widget=forms.PasswordInput(attrs={'class': 'singup_input'}))
+    nombre = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'singup_input', 'placeholder': 'Albus Percival Wulfric Brian '}))
+    apellido = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'singup_input', 'placeholder': ' Dumbledore'}))
+    email = forms.CharField(max_length=254, required=True, widget=forms.TextInput(attrs={'class': 'singup_input', 'placeholder': 'albusD@lalechuza.com'}))
+    password = forms.CharField(max_length=12, required=True,  widget=forms.PasswordInput(attrs={'class': 'singup_input', 'placeholder': '****'}))
+    confirm_password = forms.CharField(max_length=12, required=True, widget=forms.PasswordInput(attrs={'class': 'singup_input', 'placeholder': '****'}))
     
     class Meta:
         model = Usuario
         fields = ['nombre', 'apellido', 'email', 'password']
 
+    
+
     def clean(self):
         cleaned_data = super().clean()
         password = cleaned_data.get('password')
         confirm_password = cleaned_data.get('confirm_password')
+        email = cleaned_data.get('email')
+
+        if email and Usuario.objects.filter(email=email).exists():
+            raise forms.ValidationError("Este correo electrónico ya está registrado. Por favor, utiliza otro.")
 
         if password and confirm_password and password != confirm_password:
             raise forms.ValidationError("Las contraseñas no coinciden. Vuelve a escribirlas.")
+
+      
+        pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)'
+        if not re.search(pattern, password):
+            raise forms.ValidationError("La contaseña debe poseer al menos una minúscula, una mayúscula y un número.")
+        
+        if len(password) < 8:
+            raise forms.ValidationError("La contaseña debe poseer al menos 8 caracteres")
+
 
     def save(self, commit=True):
         user = super().save(commit=False)

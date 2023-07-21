@@ -4,10 +4,11 @@
 <div class="container-fluid main_index d-flex flex-column justify-content-between flex-md-row row gx-5 p-4">
     <div class="card col-12 col-lg-5  d-none d-lg-flex">
         <div class="card-header card_header_signup">
-            Crea, reseña, comparte.
+          <p>Crea, reseña, comparte... ya somos {{ cantidad_usuarios }} libreros.</p>  
+          
         </div>
         <div class="card-body pt-0">
-          <h1 class="card-title ">Mi librería <img class="libromes" src="{% static 'img/libromes.webp' %}" alt="Portada Libro Alan Wake"></h1>
+          <h1 class="card-title ">Libreros</h1>
           <p class="card-text">Añade libros a tu lista de leidos, califícalos, cuenta tus impresiones, debate sobre su trama y contexto, escribe pasajes literarios alternativos.</p>
           <a href=" {% url 'user_manager:signUp' %} " class="btn btn-primary btn_signup col-12 col-lg-4 mb-2 ">Crear cuenta</a>
         </div>
@@ -28,7 +29,7 @@
                 </div>
             </div>
             <div class="text-center text-md-end pt-1">
-                <button id="btn_signup" type="submit" class="btn btn-primary btn_signup col-12 col-lg-4 mb-2" >Enviar</button>
+                <button id="btn_signup" type="submit" class="btn btn-primary btn_signup col-12 col-lg-4 mb-2" >Conecta</button>
                 <a class="mobile_create_account d-inline d-lg-none text-center text-decoration-none" href="">¿Aún no eres parte? Crea una cuenta.</a>
             </div>
             

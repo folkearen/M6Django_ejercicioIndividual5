@@ -1,7 +1,0 @@
-{% extends 'home/base.html' %}
-{% block main %}
-    <h1>Usuarios registrados</h1>
-    {% for usuario in usuarios %}
-        <h5>{{ usuario.nombre }} {{ usuario.apellido }} {{ usuario.email}}</h5>
-    {% endfor %}
-{% endblock main %}
