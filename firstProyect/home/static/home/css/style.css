@@ -15,6 +15,7 @@ body{
 #navbar {
     background-color: #CAD5CF;
     padding: 0;
+    
 }
 .navoffset {
     background-color: #CAD5CF;
@@ -40,7 +41,7 @@ footer div {
 
 #ham{
     border: none;
-    color: #CAD5CF;
+    color: transparent;
 }
 
 .logo {
@@ -58,19 +59,20 @@ footer div {
     color: whitesmoke;
     background-color:  #5A11BF;
 }
+.visite_blog {
+    width: 100%;
+}
 .card_header_signup{
     border: none;
     color: #5A11BF;
 }
 
-.login_title{
+.shop_home_title{
     color: #5A11BF;
 }
-.mobile_create_account {
-    color: #5A11BF;
+.ar_nav_hight {
+    color: #5A11BF !important;
+
 }
-.libromes{
-    border-radius: 0.3rem;
-    height: 5rem;
-    width: 3rem;
-}
+
+

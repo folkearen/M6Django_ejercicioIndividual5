@@ -22,6 +22,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    /* margin-top: 2rem; */
     width:100%;
    
 }
@@ -39,7 +40,10 @@
     color: #f0f8ff;
 }
 .user_manager_signup form {
-    padding: 3rem;
+    
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
     position: relative;
     width: 60%;
     
@@ -69,7 +73,7 @@
     border-radius: 1rem;
     bottom: 0;
     content: "";
-    filter: blur(5px); 
+    filter: blur(3px); 
     left: 0;
     right: 0;
     opacity: 0.6; 
@@ -92,8 +96,10 @@
 
 }
 #btn_signup{
+    
     background-color: #D5CEA2;
-    margin-top: 1rem;
+    margin: 1rem auto;
+
 }
 .user_manager_error{
     background-color: red;

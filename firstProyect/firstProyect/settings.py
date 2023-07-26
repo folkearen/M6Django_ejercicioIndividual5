@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -116,6 +117,9 @@ TIME_ZONE = 'America/Santiago'
 USE_I18N = True
 
 USE_TZ = True
+
+LOGIN_REDIRECT_URL = reverse_lazy('user_manager:userAccount')
+LOGOUT_REDIRECT_URL = reverse_lazy('home:home')
 
 
 # Static files (CSS, JavaScript, Images)

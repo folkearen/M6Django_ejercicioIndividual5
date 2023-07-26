@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 from ..models import *
 import re
 #Etiqueta meta
@@ -21,8 +22,6 @@ class SignUp(forms.ModelForm):
         model = Usuario
         fields = ['nombre', 'apellido', 'email', 'password']
 
-    
-
     def clean(self):
         cleaned_data = super().clean()
         password = cleaned_data.get('password')
@@ -35,11 +34,16 @@ class SignUp(forms.ModelForm):
         if password and confirm_password and password != confirm_password:
             raise forms.ValidationError("Las contraseñas no coinciden. Vuelve a escribirlas.")
 
-      
-        pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)'
-        if not re.search(pattern, password):
+        prohibited_patterns = r'\s'
+        if  re.search(prohibited_patterns, password):
+            raise forms.ValidationError("La contraseña no puede tener espacios")
+        
+        allowed_pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)'
+        if not re.search(allowed_pattern, password):
             raise forms.ValidationError("La contaseña debe poseer al menos una minúscula, una mayúscula y un número.")
         
+        
+
         if len(password) < 8:
             raise forms.ValidationError("La contaseña debe poseer al menos 8 caracteres")
 
@@ -52,6 +56,16 @@ class SignUp(forms.ModelForm):
             user.save()
         return user
   
+
+class LoginForm(AuthenticationForm):
+    username =forms.EmailField(max_length=254, widget=forms.TextInput(attrs={'class': 'login_input', 'placeholder': 'Ej: tunombre@example.com'}))
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput(attrs={'class': 'login_input', 'placeholder': '***********'}))
+    
+    error_messages = {
+        'invalid_login': "El correo electrónico o la contraseña no son válidos. Por favor, inténtalo de nuevo.",
+        'inactive': "Esta cuenta está inactiva.",
+    }
+
 
 # def clean(self):: Este es el método clean() de un formulario personalizado en Django. Es un método especial que se utiliza para realizar validaciones personalizadas antes de que los datos del formulario se guarden en la base de datos.
 

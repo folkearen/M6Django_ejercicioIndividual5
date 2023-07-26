@@ -17,3 +17,4 @@ class Usuario(AbstractUser):
     def save(self, *args, **kwargs):
         self.username = self.email  # Asignamos el valor del email al username
         super().save(*args, **kwargs)
+

@@ -22,16 +22,33 @@
                     <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
                     <button class="btn" type="submit">Buscar</button>
                 </form>
-                <ul class="navbar-nav mb-2 mb-lg-0 col-lg-6 d-flex justify-content-end">
+                <ul class="navbar-nav ms-sm-5 mb-2 mb-lg-0 col-lg-6 d-flex justify-content-end">
                   <li class=" nav-item">
                     <a  class="nav-link" aria-current="page" href=" {% url 'home:home' %} ">Inicio</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href=" {% url 'home:contacto' %} ">Contacto</a>
+                    <a class="nav-link" aria-current="page" href="">Libreía</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Mi librería</a>
+                    <a class="nav-link" aria-current="page" href="">Liblog</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="">Contacto</a>
+                  </li>
+                  <li class="nav-item">
+                    <a   class="nav-link ar_nav_hight" href="{% url 'user_manager:signUp' %}">Crear cuenta</a>
+                  </li>
+
+                  {% if user.is_authenticated %}
+                    <li class="nav-item">
+                      <a class="nav-link ar_nav_high" href="{% url 'user_manager:logout' %}">Logout</a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item">
+                      <a  class="nav-link ar_nav_hight" href="{% url 'user_manager:login' %}">Iniciar sesión</a>
+                    </li>
+                  {% endif %}
+ 
                   {% comment %} <li class="nav-item">
                     <a class="nav-link" href=" {% url 'user_manager:mostrarUsuarios' %} ">Show user</a>
                   </li> {% endcomment %}
@@ -50,16 +67,28 @@
                   <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                  <a class="navbar-brand  d-flex justify-content-center " href="{% url 'home:home' %}"><img class="logo col-auto" src="{% static 'img/logo.jpg' %}" alt="Logo"></a>
+                  <a class="navbar-brand  d-flex justify-content-center " href="{% url 'home:home' %}"><img class="logo col-auto" src="{% static 'user_manager/img/logo.jpg' %}" alt="Logo"></a>
                   <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class=" nav-item">
                       <a  class="nav-link" aria-current="page" href=" {% url 'home:home' %} ">Inicio</a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="">Libreía</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="">Liblog</a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link" aria-current="page" href=" {% url 'home:contacto' %} ">Contacto</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Mi librería</a>
+                      <a   class="nav-link ar_nav_hight" aria-current="page" href="{% url 'user_manager:signUp' %}">Crear cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link ar_nav_high" aria-current="page"  href="{% url 'user_manager:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link ar_nav_high" aria-current="page"  href="{% url 'user_manager:logout' %}">Logout</a>
                     </li>
                     {% comment %} <li class="nav-item">
                       <a class="nav-link" href=" {% url 'user_manager:mostrarUsuarios' %} ">Show user</a>
